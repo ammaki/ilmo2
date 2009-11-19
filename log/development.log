@@ -1,0 +1,92 @@
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (10.1ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [4;35;1mSQL (46.3ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPGError: ERROR: relation "courses" does not exist
+: SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+ FROM pg_attribute a LEFT JOIN pg_attrdef d
+ ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+ WHERE a.attrelid = '"courses"'::regclass
+ AND a.attnum > 0 AND NOT a.attisdropped
+ ORDER BY a.attnum
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateCourses (20091111094454)
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (75.7ms)[0m   [0;1mCREATE TABLE "courses" ("id" serial primary key, "name" character varying(255), "description" text, "created_at" timestamp, "updated_at" timestamp) [0m
+  [4;35;1mSQL (0.4ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091111094454')[0m
+  [4;36;1mSQL (8.9ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (6.2ms)[0m   [0mINSERT INTO "courses" ("name", "created_at", "updated_at", "description") VALUES(E'Ruby on Rails', '2009-11-11 09:51:26.454997', '2009-11-11 09:51:26.454997', E'Syksyn ketterin kurssi') RETURNING "id"[0m
+  [4;36;1mSQL (36.8ms)[0m   [0;1mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateCourses (20091111094454)
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mCourse Load (0.6ms)[0m   [0;1mSELECT * FROM "courses" WHERE ("courses"."id" = 1) [0m
+  [4;35;1mCourse Load (0.8ms)[0m   [0mSELECT * FROM "courses" WHERE ("courses"."name" = E'ruby') LIMIT 1[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mINSERT INTO "courses" ("name", "created_at", "updated_at", "description") VALUES(E'LaMa', '2009-11-11 10:59:28.019767', '2009-11-11 10:59:28.019767', NULL) RETURNING "id"[0m
+  [4;36;1mSQL (8.0ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mCourse Load (0.4ms)[0m   [0mSELECT * FROM "courses" LIMIT 1[0m
+  [4;36;1mCourse Load (0.0ms)[0m   [0;1mPGError: ERROR: invalid input syntax for integer: "--- :second
+"
+: SELECT * FROM "courses" WHERE ("courses"."id" = E'--- :second
+') [0m
+  [4;35;1mCourse Load (1.0ms)[0m   [0mSELECT * FROM "courses" WHERE ("courses"."id" = 2) [0m
+  [4;36;1mCourse Load (0.9ms)[0m   [0;1mSELECT * FROM "courses" WHERE ("courses"."id" = 2) [0m
+  [4;35;1mSQL (0.9ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mINSERT INTO "courses" ("name", "created_at", "updated_at", "description") VALUES(E'Rio', '2009-11-11 11:05:10.521385', '2009-11-11 11:05:10.521385', E'Rinnakkaisohjelmointi') RETURNING "id"[0m
+  [4;35;1mSQL (7.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mCourse Load (0.5ms)[0m   [0;1mSELECT * FROM "courses" WHERE ("courses"."id" = 2) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mCourse Update (0.5ms)[0m   [0;1mUPDATE "courses" SET "updated_at" = '2009-11-11 11:06:17.193610', "description" = E'Laskennan mallit' WHERE "id" = 2[0m
+  [4;35;1mSQL (7.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mCourse Load (1.9ms)[0m   [0;1mSELECT * FROM "courses" [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mCourse Load (0.6ms)[0m   [0;1mSELECT * FROM "courses" WHERE ("courses"."id" = 1) [0m
+  [4;35;1mCourse Load (1.9ms)[0m   [0mSELECT * FROM "courses" WHERE ("courses"."id" = 2) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mCourse Load (0.8ms)[0m   [0;1mSELECT * FROM "courses" WHERE ("courses"."id" = 3) [0m
+  [4;35;1mCourse Load (1.9ms)[0m   [0mSELECT * FROM "courses" WHERE ("courses"."id" = 3) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateCourses (20091111094454)
+Migrating to CreateUsers (20091113124559)
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateCourses (20091111094454)
+Migrating to CreateUsers (20091113124559)
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mUser Load (2.1ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m

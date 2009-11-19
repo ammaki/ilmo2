@@ -1,0 +1,21 @@
+<html>
+ <head>
+  <title>Ilmo 2.0</title>
+</head>
+<body> 	
+<h1>Ilmo 2.0</h1>
+<p>Tässä tarjolla olevat kurssit!</p>
+
+<% @courses.each do |course| %>
+raise "poikkeus"
+	<li><%= link_to course.name, course %>
+	(<%= link_to 'edit', edit_course_path(course) %>|<%= link_to 	 	'destroy', course, :confirm => 'Are you sure?', :method => :delete %>)<br />
+<% end %>
+
+<br />
+
+<%= link_to 'Add a new course', new_course_path %>
+
+ </body>
+</html>
+

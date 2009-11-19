@@ -1,0 +1,9 @@
+<html>
+ <body>
+
+<%= yield %>
+<p>
+ Page created: <%= Time.now %>	
+   </p>		
+ </body>
+</html>
